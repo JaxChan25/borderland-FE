@@ -1,29 +1,21 @@
 <template>
-
   <div id="app">
-
     <router-view></router-view>
-
-
   </div>
 </template>
 
 <script>
-
-import Login from './components/Login.vue'
-
+import Login from "./components/Login.vue";
 
 export default {
-  name: 'App',
-  data(){
-    return {
-
-      };
+  name: "App",
+  data() {
+    return {};
   },
   components: {
-    Login,
+    Login
   }
-}
+};
 </script>
 
 <style>
@@ -35,6 +27,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
-
 </style>

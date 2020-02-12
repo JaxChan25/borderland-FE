@@ -1,5 +1,5 @@
 import Login from './components/Login.vue'
-import HelloWorld from './components/HelloWorld.vue'
+import About from './components/About.vue'
 import Home from './components/Home.vue'
 
 let routes = [
@@ -16,8 +16,8 @@ let routes = [
         hidden: true
     },
     {
-        path: '/test',
-        component: HelloWorld,
+        path: '/about',
+        component: About,
         name: '',
         hidden: true
     },

@@ -1,9 +1,11 @@
 <template>
   <div>
+    123
   </div>
 </template>
 
 <script>
+import * as API from '../api/api';
 export default {
   name: '',
   data() {
@@ -11,7 +13,11 @@ export default {
 
     }
   },
-
+  methods:{
+    getMessage(){
+      
+    }
+  }
 }
 </script>
 
