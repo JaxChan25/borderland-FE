@@ -1,31 +1,7 @@
 <template>
-  <div>
 
- 
-    <transition>
-      <div v-if="flag">
-      <h1>this is title</h1>
-      </div>
-    </transition>
+<div v-html="element"></div>
 
-
-
-  <div>
-    <el-button @click="show = !show">Click Me</el-button>
-
-    <div style="display: flex; margin-top: 20px; height: 100px;">
-      <transition name="el-fade-in-linear">
-        <div v-show="show" class="transition-box">.el-fade-in-linear</div> 
-        
-
-
-      </transition>
-
-    </div>
-  </div>
-
-   
-  </div>
 </template>
 
 <script>
@@ -33,6 +9,7 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      element:'<h3>测试</h3>',
       flag:false,
       show: true
     }

@@ -25,7 +25,8 @@
 </template>
 
 <script>
-import * as API from '../api/api';
+import * as API from '@/api/user/';
+
 export default {
   name: "login",
   data() {
@@ -40,6 +41,7 @@ export default {
   },
   methods: {
     loginMethod() {
+      console.log("click");
       API.requestLogin(this.form)
         .then(res => {
           if (res.code == 0) {
