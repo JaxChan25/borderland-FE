@@ -2,7 +2,7 @@
   <div>
     <transition>
       <div v-if="flag">
-        <img src="../assets/logo.png" id="logo" />
+        <div align="center"><img class="logo" src="../assets/logo.png" id="logo" /></div>
         <h3 class="title">欢迎来到Borderland</h3>
         <el-row :gutter="20">
           <el-col :span="6" :offset="9">
@@ -96,4 +96,6 @@ export default {
 .v-leave-active {
   transition: all 1.5s ease;
 }
+
+
 </style>
