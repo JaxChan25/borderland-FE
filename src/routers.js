@@ -17,30 +17,28 @@ let routes = [
         name: '',
         hidden: true
     },
-    {
-        path: '/login',
-        component: Login,
-        name: '',
-        hidden: true
-    },
-    {
-        path: '/about',
-        component: About,
-        name: '',
-        hidden: true
-    },
+    
     {
         path: '/home',
         component: Home,
         name: '',
-        hidden: true
+        hidden: true,
+        children: [
+            {
+                path: '/about',
+                component: About,
+                name: '',
+                hidden: true
+            },
+            {
+                path: '/article',
+                component: Article,
+                name: '',
+                hidden: true
+            },
+          ]
     },
-    {
-        path: '/article',
-        component: Article,
-        name: '',
-        hidden: true
-    },
+    
 
 ]
 

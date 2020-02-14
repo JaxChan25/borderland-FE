@@ -3,30 +3,20 @@
     <div class="title">
       <span>borderland</span>
     </div>
-    <div class="nav">
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-        
-          <el-menu-item index="1">
-            <i class="el-icon-s-home"></i>home
-          </el-menu-item>
-        
-          <el-menu-item index="2">
-            <i class="el-icon-user-solid"></i>about
-          </el-menu-item>
-      </el-menu>
-    </div>
+    <NavBar></NavBar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import About from "./About.vue";
+import NavBar from "./NavBar.vue";
 export default {
   name: "",
   data() {
     return {};
   },
   components:{
-    About
+    NavBar
   }
 };
 </script>
