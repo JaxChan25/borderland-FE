@@ -99,11 +99,6 @@ p img{
 }
 
 
-#content {
-    font-family: "Microsoft YaHei",  'sans-serif';
-    font-size: 16px;
-    line-height: 30px;
-}
 
 #content .desc ul,#content .desc ol {
     color: #333333;
@@ -117,5 +112,11 @@ p img{
 
 #content .desc a {
     color: #009a61;
+}
+
+#content{
+  font-family: "Microsoft JhengHei" ,"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+  font-size: 18px;
+  line-height: 30px;
 }
 </style>

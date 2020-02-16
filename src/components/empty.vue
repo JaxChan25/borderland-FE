@@ -1,11 +1,10 @@
 <template>
-  <div>
-    about
-  </div>
+
+
+
 </template>
 
 <script>
-import * as API from '../api/user/';
 export default {
   name: '',
   data() {
@@ -13,11 +12,7 @@ export default {
 
     }
   },
-  methods:{
-    getMessage(){
-      
-    }
-  }
+
 }
 </script>
 
