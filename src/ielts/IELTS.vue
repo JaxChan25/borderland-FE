@@ -1,23 +1,22 @@
 <template>
   <div class="main">
-    <h3>1 categories in total</h3>
-    <div class="categories" router>
-      <a  href="#" @click="go">IELTS</a>
-    </div>
+    <h2>If you don't speak English! <br>Go home!</h2>
     
+    <el-button type="info" plain @click="goBack" style="float:right;">Back</el-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Catalog',
+  name: 'IELTS',
   data() {
     return {
+      
     }
   },
   methods:{
-    go(){
-      this.$router.push({ path: '/IELTS' });
+    goBack(){
+      this.$router.push({ path: '/catalog' });
     }
   }
 }
@@ -30,9 +29,4 @@ export default {
   margin: 5px auto;
   text-align: center;
 }
-.categories a{
-  color: darkgray;
-  text-decoration: none;
-}
-.categories a:hover{color: plum;}
 </style>

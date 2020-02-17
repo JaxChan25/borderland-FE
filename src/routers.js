@@ -1,13 +1,14 @@
 import Home from './components/Home.vue'
 import  ListArticle from './components/ListArticle.vue'
 
-//懒加载
+//懒加载 ok
 const Catalog = ()=> import ('./components/Catalog.vue');
 const Login =()=> import ('./components/Login.vue');
 const HelloWorld = ()=> import ('./components/HelloWorld.vue');
 const Article = ()=> import ('./components/Article.vue');
 const Archives =()=>import ('./components/Archives.vue')
 const Activity =()=>import ('./components/Activity.vue')
+const IELTS =()=>import ('./ielts/IELTS.vue')
 
 let routes = [
     {
@@ -61,6 +62,12 @@ let routes = [
             {
                 path: '/activity',
                 component: Activity,
+                name: '',
+                hidden: true
+            },
+            {
+                path: '/IELTS',
+                component: IELTS,
                 name: '',
                 hidden: true
             },

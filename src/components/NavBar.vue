@@ -1,5 +1,5 @@
 <template>
-<div class>
+<div>
   <el-menu class="el-menu-demo" mode="horizontal" router>
     <el-menu-item index="/listarticle">
       <i class="el-icon-s-home"></i>home
@@ -29,7 +29,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .el-menu-demo{
-  padding-left : 16% !important;
-  margin: 0 15% 0 15%
+  padding-left : 13% !important;
+  margin: 0 18% 0 18%
 }
 </style>
