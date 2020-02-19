@@ -8,8 +8,11 @@ const getArticle = id => axios.get(`/api/v1/article/${id}`).then(res => res.data
 // const getArticles = () => axios.get('/api/v1/articles').then(res => res.data);
 const getArticles = (start,limit) => axios.get('/api/v1/articles',{params:{start,limit}}).then(res => res.data);
 
+//读文章所有类别
+const getCatalogs = () => axios.get('/api/v1/catalogs').then(res => res.data);
 
 export {
     getArticles,
-    getArticle
+    getArticle,
+    getCatalogs
 }
