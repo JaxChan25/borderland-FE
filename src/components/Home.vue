@@ -29,7 +29,7 @@ export default {
   },
 
   mounted() {
-    this.$router.push({ path: '/listarticle' });
+    //this.$router.push({ path: '/listarticle' });
   }
 };
 </script>

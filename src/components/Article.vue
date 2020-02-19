@@ -11,9 +11,9 @@ export default {
   name: '',
   data() {
     return {
-      id:1,
+      articleID:this.$route.params.articleID,
       article:{
-        content:'<h3>测试</h3>',
+        content:'<h3>请尊贵的客人等待一会...</h3>',
         toc:''
       } ,
       testMark :'# Marked in the browser\n\nRendered by **marked**.'
@@ -22,8 +22,8 @@ export default {
 
   methods: {
     getArticleMethod() {
-      // console.log(this.id)
-      API.getArticle(this.id).then( (res)=>{
+      // console.log(this.articleID)
+      API.getArticle(this.articleID).then( (res)=>{
         if(res.code>0){
             this.$notify.error({
               title: '错误1',

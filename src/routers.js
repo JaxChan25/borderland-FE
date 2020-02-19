@@ -10,6 +10,7 @@ const Archives =()=>import ('./components/Archives.vue')
 const Activity =()=>import ('./components/Activity.vue')
 const IELTS =()=>import ('./ielts/IELTS.vue')
 
+
 let routes = [
     {
         path: '/login',
@@ -48,12 +49,6 @@ let routes = [
                 hidden: true
             },
             {
-                path: '/article',
-                component: Article,
-                name: '',
-                hidden: true
-            },
-            {
                 path: '/archives',
                 component: Archives,
                 name: '',
@@ -69,6 +64,12 @@ let routes = [
                 path: '/IELTS',
                 component: IELTS,
                 name: '',
+                hidden: true
+            },
+            {
+                path: '/article/:articleID',
+                component: Article,
+                name: 'article',
                 hidden: true
             },
           ]

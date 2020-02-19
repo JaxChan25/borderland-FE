@@ -5,9 +5,9 @@
 
       <div
         class="articleCard"
-        v-for="(article,index) in articleObj"
-        :key="index"
-        @click="showArticleMethod(index+1)"
+        v-for="(article) in articleObj"
+        :key="article.id"
+        @click="showArticleMethod(article)"
       >
         <el-card class="box-card" shadow="hover">
 
@@ -97,8 +97,8 @@ export default {
           });
         });
     },
-    showArticleMethod(id) {
-      console.log(id)
+    showArticleMethod(article) {
+      this.$router.push({name:'article',params:{articleID:article.id}})
   },
 
   },
@@ -130,6 +130,7 @@ export default {
 .articleCard {
   margin: 20px 0 0 0;
   text-align:center;
+  cursor:pointer;
 }
 
 .sub {
