@@ -6,8 +6,10 @@
         </div>
         <p style="text-align:center" class="motto">为了无上的价值</p>
 
-        <NavBar></NavBar>
-        <router-view></router-view>
+        <div class = 'block'>
+          <NavBar></NavBar>
+          <router-view></router-view>
+        </div>
       </div>
     
 </template>
@@ -27,7 +29,7 @@ export default {
   },
 
   mounted() {
-    // this.$router.push({ path: '/listarticle' });
+    this.$router.push({ path: '/listarticle' });
   }
 };
 </script>
@@ -52,5 +54,10 @@ p.title {
 .motto {
   color: gray;
   font-size: 14px;
+}
+
+.block{
+  margin: 0 19% 0 19%;
+
 }
 </style>

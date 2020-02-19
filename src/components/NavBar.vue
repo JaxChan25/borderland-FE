@@ -28,8 +28,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.el-menu-demo{
-  padding-left : 13% !important;
-  margin: 0 18% 0 18%
+.el-menu{
+padding-left: 15%
 }
 </style>

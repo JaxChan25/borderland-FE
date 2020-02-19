@@ -5,7 +5,8 @@ import axios from 'axios';
 const getArticle = id => axios.get(`/api/v1/article/${id}`).then(res => res.data);
 
 //读文章列表
-const getArticles = () => axios.get('/api/v1/articles').then(res => res.data);
+// const getArticles = () => axios.get('/api/v1/articles').then(res => res.data);
+const getArticles = (start,limit) => axios.get('/api/v1/articles',{params:{start,limit}}).then(res => res.data);
 
 
 export {

@@ -1,30 +1,46 @@
 <template>
   <div>
     <div class="block">
+
+
       <div
         class="articleCard"
         v-for="(article,index) in articleObj"
         :key="index"
-        @click="showArticleMethod(index)"
+        @click="showArticleMethod(index+1)"
       >
         <el-card class="box-card" shadow="hover">
-          <el-divider content-position="left">
-            <span class="maintitle">{{article.title}}</span>
-          </el-divider>
+
+          <p class="title" >{{article.title}}</p>
+
+
           <div class="sub">
-            <span>{{article.created_at}}</span>
+            <span>Posted on {{article.created_at}}</span>
             <el-divider direction="vertical"></el-divider>
-            <span>{{article.catalog}}</span>
+            <span>{{article.view}} Views</span>
             <el-divider direction="vertical"></el-divider>
-            <span>{{article.view}}</span>
-            <el-divider direction="vertical"></el-divider>
-            <span>{{article.like}}</span>
-            <el-divider direction="vertical"></el-divider>
-            <span>{{article.introduction}}</span>
+            <span>{{article.like}} Likes</span>
           </div>
+
+          <el-divider content-position="left">
+            <span class="maintitle">{{article.catalog}}</span>
+          </el-divider>
+          <p class="introduction">{{article.introduction}}</p>
+
         </el-card>
       </div>
     </div>
+
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="1"
+      :page-sizes="[2, 4, 10]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total">
+    </el-pagination>
+
   </div>
 </template>
 
@@ -44,16 +60,29 @@ export default {
         like: "",
         created_at: ""
       },
-      articleObj: []
+      articleObj: [],
+      total:0,
+      start:0,
+      limit:2,
     };
   },
 
   methods: {
+    handleSizeChange(val){
+      this.limit = val;
+      this.getArticlesMethod();
+    },
+    handleCurrentChange(val){
+      this.start = this.limit * (val-1);
+      this.getArticlesMethod();
+    },
+
     getArticlesMethod() {
-      API.getArticles()
+      API.getArticles(this.start,this.limit)
         .then(res => {
           if (res.code == 0) {
-            this.articleObj = res.data;
+            this.articleObj = res.data.items;
+            this.total = res.data.total;
           } else {
             this.$notify.error({
               title: "后端错误",
@@ -67,9 +96,12 @@ export default {
             message: err
           });
         });
-    }
+    },
+    showArticleMethod(id) {
+      console.log(id)
   },
-  showArticleMethod(id) {},
+
+  },
   mounted() {
     this.getArticlesMethod();
   }
@@ -95,22 +127,37 @@ export default {
   background-color: #d3dce6;
 }
 
-.block {
-  width: 800px;
-  margin: 5px auto;
-}
-
 .articleCard {
   margin: 20px 0 0 0;
+  text-align:center;
 }
 
 .sub {
-  font-size: 14px;
+  font-size: 13px;
   color: #99a9bf;
+  margin:0 0 50px 0
 }
 .maintitle {
   font-family: "YouYuan";
-  font-size: 20px;
+  font-size: 14px;
   color: plum;
 }
+
+.el-pagination{
+  margin:20px
+}
+
+.title{
+  font-family: "Microsoft YaHei";
+  font-weight:bold;
+  font-size:30px;
+  letter-spacing:2px
+}
+
+.introduction{
+letter-spacing:1px;
+line-height:200%;
+margin:60px 0 100px 0;
+}
+
 </style>
