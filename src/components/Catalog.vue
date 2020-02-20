@@ -1,5 +1,7 @@
 <template>
   <div class="main">
+
+
     <h1>{{total}} categories in total</h1>
 
     <div

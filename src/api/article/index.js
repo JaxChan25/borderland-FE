@@ -11,8 +11,14 @@ const getArticles = (start,limit,catalog) => axios.get('/api/v1/articles',{param
 //读文章所有类别
 const getCatalogs = () => axios.get('/api/v1/catalogs').then(res => res.data);
 
+
+//增加文章的Like 
+const addLike = id => axios.post(`/api/v1/article/like/${id}`).then(res => res.data);
+
 export {
     getArticles,
     getArticle,
-    getCatalogs
+    getCatalogs,
+    addLike
+
 }

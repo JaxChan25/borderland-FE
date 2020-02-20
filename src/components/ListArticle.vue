@@ -110,6 +110,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.block{
+  margin: 0 19% 0 19%;
+}
+
 .el-carousel__item h3 {
   text-align: center;
   color: #475669;

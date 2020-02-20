@@ -1,5 +1,53 @@
 <template>
-<div id="content" v-html="article.content" class="article-detail"></div>
+<div class="block-2">
+<el-container>
+
+  <el-container>
+    <el-main>
+
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/listarticle' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>文章详情</el-breadcrumb-item>
+      </el-breadcrumb>
+
+      <h1 class="title">{{article.title}}</h1>
+
+
+      <div class="sub">
+        <span>Posted on {{article.created_at}}</span>
+        <el-divider direction="vertical"></el-divider>
+        <span>{{article.view}} Views</span>
+        <el-divider direction="vertical"></el-divider>
+        <span>{{article.like}} Likes</span>
+      </div>
+
+      <el-divider content-position="left">
+        <span class="maintitle">{{article.catalog}}</span>
+      </el-divider>
+
+      <div id="content" v-html="article.content" class="article-detail"></div>
+    </el-main>
+
+    <el-aside width="200px">
+      <div  v-html="article.toc" class="toc"></div>
+    </el-aside>
+  </el-container>
+
+  <el-footer>
+    <el-divider></el-divider>
+
+    <div class="clap">
+      <h3>给我一个小鼓励吧!</h3>
+      <vue-clap-button @clap="clap"></vue-clap-button>
+    </div>
+
+
+  </el-footer>
+
+</el-container>
+
+
+</div>
 </template>
 
 <script>
@@ -12,11 +60,18 @@ export default {
   data() {
     return {
      articleID:this.$route.params.articleID,
-      article:{
-        content:'<h3>请尊贵的客人等待一会...</h3>',
-        toc:''
-      } ,
-      testMark :'# Marked in the browser\n\nRendered by **marked**.'
+      article: {
+        id: "",
+        title: "",
+        introduction: "",
+        content: "请等等啦",
+        catalog: "",
+        view: "",
+        like: "",
+        created_at: "",
+        toc:""
+      },
+
     }
   },
 
@@ -24,7 +79,7 @@ export default {
   methods: {
     getArticleMethod() {
       
-      if (this.articleID==undefined){
+      if (this.$route.params.articleID==undefined){
         this.articleID = this.$store.state.articleID
       }
     
@@ -36,13 +91,9 @@ export default {
             });
 
         }else{
-            // this.$notify({
-            // title: '成功',
-            // message: `您的查看ID为${res.data.id}`,
-            // type: 'success'
-            //   });
 
-   
+
+            this.article = res.data
             var p = markdown.marked(res.data.content)
             p.then((val) => {
               this.article.content = val.content;
@@ -57,17 +108,55 @@ export default {
             });
       })
         
+    },
+
+    clap(clapsCount) {
+     
+      API.addLike(this.article.id).then( (res)=>{
+        if(res.code>0){
+            this.$notify.error({
+              title: '错误1',
+              message:  res.msg
+            });
+
+        }else{
+         //console.log("点赞成功")
+  
+        }
+      }).catch((error)=>{
+              this.$notify.error({
+              title: '错误2',
+              message:  error
+            });
+      })
+
     }
+
   },
   mounted(){
-    this.getArticleMethod()
-  }
+     this.getArticleMethod()
+  },
+
+
 }
 
 </script>
 
 
 <style>
+.block-2{
+ margin:0 5% 0 10%
+}
+.el-main{
+ margin:0 0% 0 10%
+}
+.clap{
+  text-align:center;
+}
+.clap div{
+  margin:0 auto;
+}
+
 /*对 markdown 样式的补充*/
 pre {
     display: block;
@@ -124,4 +213,41 @@ p img{
   font-size: 18px;
   line-height: 30px;
 }
+
+.maintitle {
+  font-family: "YouYuan";
+  font-size: 14px;
+  color: plum;
+}
+
+.el-breadcrumb{
+ margin:20px 0 0 0
+}
+
+.title{
+  font-family: "Microsoft YaHei";
+  font-weight:bold;
+  font-size:45px;
+  letter-spacing:3px;
+  text-align:center;
+  margin:120px 0 30px 0
+}
+
+.sub {
+  font-size: 13px;
+  color: #99a9bf;
+  margin:0 0 50px 0;
+  text-align:center;
+}
+
+.toc{
+  position:fixed;
+  margin:60px 0 0 0;
+  font-family:  "Microsoft JhengHei" ,"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+  font-size: 16px;
+  color: plum;
+  line-height:200%;
+
+}
+
 </style>
