@@ -29,7 +29,7 @@
 
         </el-card>
       </div>
-    </div>
+    
 
     <el-pagination
       @size-change="handleSizeChange"
@@ -40,7 +40,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-
+  </div>
   </div>
 </template>
 

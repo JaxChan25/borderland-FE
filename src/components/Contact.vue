@@ -1,11 +1,11 @@
 <template>
 
-<Article :articleID="contactID"></Article>
+
 
 </template>
 
 <script>
-import Article from './Article.vue'
+
 export default {
   name: 'Contact',
   data() {
@@ -14,10 +14,10 @@ export default {
     }
   },
   components: {
-    Article
+   
   },
   mounted(){
-    this.$store.commit('changeArticleID',this.contactID)
+    this.$router.push({name:'article',params:{articleID:this.contactID}})
   }
 
 }

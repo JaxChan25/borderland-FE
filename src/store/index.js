@@ -7,8 +7,8 @@ const store= new Vuex.Store({
         articleID:0
     },
     mutations:{
-        changeArticleID(state,articleID){
-            state.articleID = articleID
+        changeArticleID(state,param){
+            state.articleID = param
         }
     }
 })

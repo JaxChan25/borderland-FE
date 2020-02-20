@@ -18,7 +18,7 @@
         <el-divider direction="vertical"></el-divider>
         <span>{{article.view}} Views</span>
         <el-divider direction="vertical"></el-divider>
-        <span>{{article.like}} Likes</span>
+        <span class="like">{{article.like}} Likes</span>
       </div>
 
       <el-divider content-position="left">
@@ -78,10 +78,6 @@ export default {
 
   methods: {
     getArticleMethod() {
-      
-      if (this.$route.params.articleID==undefined){
-        this.articleID = this.$store.state.articleID
-      }
     
       API.getArticle(this.articleID).then( (res)=>{
         if(res.code>0){
@@ -100,6 +96,8 @@ export default {
               this.article.toc = val.toc;
             });
 
+            this.$store.commit('changeArticleID',0)
+          
         }
       }).catch((error)=>{
               this.$notify.error({
@@ -155,6 +153,10 @@ export default {
 }
 .clap div{
   margin:0 auto;
+}
+
+.like{
+  color:plum;
 }
 
 /*对 markdown 样式的补充*/

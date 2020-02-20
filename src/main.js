@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 Vue.use(vueClapButton);
-
+ 
 
 const router = new VueRouter({
   routes
