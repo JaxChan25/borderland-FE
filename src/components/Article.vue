@@ -11,7 +11,7 @@ export default {
   name: '',
   data() {
     return {
-      articleID:this.$route.params.articleID,
+     articleID:this.$route.params.articleID,
       article:{
         content:'<h3>请尊贵的客人等待一会...</h3>',
         toc:''
@@ -20,9 +20,14 @@ export default {
     }
   },
 
+
   methods: {
     getArticleMethod() {
-      // console.log(this.articleID)
+      
+      if (this.articleID==undefined){
+        this.articleID = this.$store.state.articleID
+      }
+    
       API.getArticle(this.articleID).then( (res)=>{
         if(res.code>0){
             this.$notify.error({
@@ -31,11 +36,11 @@ export default {
             });
 
         }else{
-            this.$notify({
-            title: '成功',
-            message: `您的查看ID为${res.data.id}`,
-            type: 'success'
-              });
+            // this.$notify({
+            // title: '成功',
+            // message: `您的查看ID为${res.data.id}`,
+            // type: 'success'
+            //   });
 
    
             var p = markdown.marked(res.data.content)

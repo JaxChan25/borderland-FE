@@ -1,9 +1,17 @@
 <template>
   <div class="main">
-    <h3>1 categories in total</h3>
-    <div class="categories" router>
-        <p v-for="(item,index) in CatalogList":key="item">{{item}}</p>
+    <h1>{{total}} categories in total</h1>
+
+    <div
+      class="categories"
+      v-for="(catalog) in CatalogList"
+      :key="catalog"
+      @click="listArticlesByCatalogMethod(catalog)" router
+    >
+
+    <a href="#" >{{catalog}}</a>
     </div>
+
     
   </div>
 </template>
@@ -14,7 +22,8 @@ export default {
   name: 'Catalog',
   data() {
     return {
-      CatalogList:[]
+      CatalogList:[],
+      total:""
     }
   },
   methods:{
@@ -28,6 +37,7 @@ export default {
 
         }else{
           this.CatalogList  = res.data.items
+          this.total = res.data.total
         }
       }).catch((error)=>{
               this.$notify.error({
@@ -37,8 +47,8 @@ export default {
       })
 
     },
-    go(){
-      this.$router.push({ path: '/IELTS' });
+    listArticlesByCatalogMethod(catalog){
+      this.$router.push({name:'listarticle',params:{catalog:catalog}});
     }
   },
   mounted(){
@@ -51,12 +61,17 @@ export default {
 <style scoped>
 .main{
   width: 800px;
-  margin: 5px auto;
+  margin: 100px auto;
   text-align: center;
 }
 .categories a{
   color: darkgray;
   text-decoration: none;
+  font-size :18px
 }
+.categories{
+  margin:10px
+}
+
 .categories a:hover{color: plum;}
 </style>

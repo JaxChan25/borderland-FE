@@ -78,7 +78,7 @@ export default {
     },
 
     getArticlesMethod() {
-      API.getArticles(this.start,this.limit)
+      API.getArticles(this.start,this.limit,this.$route.params.catalog)
         .then(res => {
           if (res.code == 0) {
             this.articleObj = res.data.items;

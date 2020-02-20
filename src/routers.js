@@ -8,7 +8,7 @@ const HelloWorld = ()=> import ('./components/HelloWorld.vue');
 const Article = ()=> import ('./components/Article.vue');
 const Archives =()=>import ('./components/Archives.vue')
 const Activity =()=>import ('./components/Activity.vue')
-const IELTS =()=>import ('./ielts/IELTS.vue')
+const Contact =()=>import ('./components/Contact.vue')
 
 
 let routes = [
@@ -39,12 +39,18 @@ let routes = [
             {
                 path: '/listarticle',
                 component: ListArticle,
-                name: '',
+                name: 'listarticle',
                 hidden: true
             },
             {
                 path: '/catalog',
                 component: Catalog,
+                name: '',
+                hidden: true
+            },
+            {
+                path: '/contact',
+                component: Contact,
                 name: '',
                 hidden: true
             },
@@ -57,12 +63,6 @@ let routes = [
             {
                 path: '/activity',
                 component: Activity,
-                name: '',
-                hidden: true
-            },
-            {
-                path: '/IELTS',
-                component: IELTS,
                 name: '',
                 hidden: true
             },

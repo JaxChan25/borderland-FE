@@ -2,19 +2,19 @@
 <div>
   <el-menu class="el-menu-demo" mode="horizontal" router>
     <el-menu-item index="/listarticle">
-      <i class="el-icon-s-home"></i>home
+      <i class="el-icon-s-home"></i>Home
     </el-menu-item>
     <el-menu-item index="/catalog">
-      <i class="el-icon-menu"></i>catalog
+      <i class="el-icon-menu"></i>Catalog
     </el-menu-item>
-    <el-menu-item >
-      <i class="el-icon-s-promotion"></i>contact
+    <el-menu-item index="/contact" >
+      <i class="el-icon-s-promotion"></i>Contact
     </el-menu-item>
     <el-menu-item index="/archives">
       <i class="el-icon-s-flag"></i>Archives
     </el-menu-item>
     <el-menu-item index="/activity">
-      <i class="el-icon-s-help"></i>activity
+      <i class="el-icon-s-help"></i>Activity
     </el-menu-item>
   </el-menu>
 </div>
